@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom"
-import { getCart,selectCart } from './cartSlice'
+import { getCart,selectCart,getCart2 } from './cartSlice'
 
-import { selectProducts } from '../allproducts/productsSlice';
-import { fetchProductsAsync } from '../allproducts/productsSlice';
+// import { selectProducts } from '../allproducts/productsSlice';
+// import { fetchProductsAsync } from '../allproducts/productsSlice';
 
 
 
@@ -14,34 +14,28 @@ import { selectMe } from '../auth/authSlice';
 
 
 
-const Cart = (props) => {
-
-
-console.log("PROPS IN CART COMPONENT: ", props.userId)
-let cartId = props.userId
-console.log("CARTID: ",typeof cartId)
-
- 
-const products = useSelector(selectProducts);
+const Cart = () => {
 
 const me = useSelector(selectMe)
-console.log("MEMEMEME: ", me.id)
 const dispatch = useDispatch()
 
-
-useEffect(() => {
-  dispatch(fetchProductsAsync())
-}, [dispatch] );
+const cart = useSelector(selectCart)
+ const products = cart.products
  
+useEffect(() => {
+  dispatch(getCart2(me.id))
+}, [dispatch] );
+
+ 
+
  
  return (
   <div id="allProducts">
-
   <div>
     <h1>Your products</h1>
       <ul className="media-list">
-        {products && products.length ? products.filter((product) => product.cartId === parseInt(cartId))
-          .map((product) => (
+        {products && products.length ?
+          products.map((product) => (
             <Link to={`/products/${product.id}`}>
               <img src={product.imageUrl} />
               <p>{product.name}</p>

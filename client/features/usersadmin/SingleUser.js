@@ -16,7 +16,7 @@ const SingleUser = () => {
 
 
   const user = useSelector(selectSingleUser);
-  console.log("USER: ", user)
+
 
   const dispatch = useDispatch()
 
@@ -32,7 +32,7 @@ const SingleUser = () => {
     <div id="user">
             <p>{user.username}</p>
             <button onClick={() => handleDelete(user.id)}>Delete User</button>
-            <Link to="/cart">Cart<Cart userId={id}/></Link>
+            <Link to="/cart">Cart<Cart /></Link>
     </div>
         )}
       

@@ -4,7 +4,6 @@ import axios from "axios";
 // const token = window.localStorage.getItem(TOKEN)
 
 export const getCart = createAsyncThunk("getCart/", async(userId)=>{
-   console.log("HELLO From get cart thunk", userId)
    try{
        const {data} = await axios.get(`/api/cart/${userId}`)
        return data
@@ -13,12 +12,22 @@ export const getCart = createAsyncThunk("getCart/", async(userId)=>{
    }
 })
 
+export const getCart2 = createAsyncThunk("getCart2/", async(userId)=>{
+    console.log("HELLO From get cart2 thunk", userId)
+    try{
+        const {data} = await axios.get(`/api/cart/${userId}/cart`)
+        return data
+    }catch(error){
+        console.log("Error in getCart2 thunk", error)
+    }
+ })
+
 export const editCartAsync = createAsyncThunk("editCart", async (cart) => {
       
     const { data } = await axios.put(`/api/cart/${cart.cartId}`, cart);
-    console.log("DATA IN editCArt Thunk, ", data)
     return data;
   });
+
 
  
 const initialState =[]
@@ -31,13 +40,16 @@ const cart = createSlice({
    extraReducers: (builder)=>{
        builder.addCase(getCart.fulfilled, (state, action)=>{
            return action.payload
-       })
-   }
+       }),
+       builder.addCase(getCart2.fulfilled, (state, action)=>{
+        return action.payload
+    })
+   },
+   
 })
  
  
 export const selectCart = (state)=>{
-   console.log("HELLE")
    return state.cart
 }
  

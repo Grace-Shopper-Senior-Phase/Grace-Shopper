@@ -52,6 +52,18 @@ router.put("/:cartId", async (req, res, next) => {
   }
 });
 
+
+router.get("/:id/cart", async (req, res, next) => {
+  try {
+    const products = await Cart.findByPk(req.params.id, { include: Product});
+    res.send(products);
+  } catch (error) {
+    console.log("Error in all products route");
+    next(error);
+  }
+});
+
+
 // const requireToken = async (req, res, next) => {
 //   try {
 //     // const token = req.headers.authorization;

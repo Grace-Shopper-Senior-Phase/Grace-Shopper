@@ -17,7 +17,7 @@ module.exports = {
   models: {
     User,
     Product,
-    Cart
+    Cart,
   },
 }
 
