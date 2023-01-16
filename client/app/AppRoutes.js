@@ -31,6 +31,7 @@ const AppRoutes = () => {
     <div>
       {isLoggedIn && !isAdmin ? (
         <Routes>
+
           <Route path="/*" element={<Home />} />
 
           <Route to="/home" element={<Home />} />
@@ -38,10 +39,10 @@ const AppRoutes = () => {
           {/* <Route
           path="/users/:id"
           element={<SingleUser />} /> */}
- <Route
+        <Route
           path="/cart"
           element={<Cart />} />
-  <Route
+        <Route
           path="/products"
           element={<AllProducts />} />
           <Route
@@ -102,6 +103,7 @@ const AppRoutes = () => {
       
       (
         <Routes>
+
           <Route
             path="/*"
             element={<AuthForm name="login" displayName="Login" />}
@@ -129,16 +131,7 @@ const AppRoutes = () => {
           
          {/* <Route path="/admin/products/:id" element={<SingleProductAdmin />} /> */}
            
-           
-
-          <Route
-          path="/admin/users"
-          element={<AllUsersAdmin />} />
-
-          <Route
-          path="/users/:id"
-          element={<SingleUser />} />
-
+        
         </Routes>
       )}
     </div>

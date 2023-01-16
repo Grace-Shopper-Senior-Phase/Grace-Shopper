@@ -6,9 +6,6 @@ import { fetchProductsAsync } from "../allproducts/productsSlice";
 import { selectMe } from "../auth/authSlice";
 import { editCartAsync } from "../cart/cartSlice";
 
-import { selectMe } from "../auth/authSlice";
-import { editCartAsync } from "../cart/cartSlice";
-
 const AllProducts = () => {
   const products = useSelector(selectProducts);
 
@@ -27,15 +24,6 @@ const cartId = me.id
   };
 
   
-  const handleAddToCart = (product) => {
-
-    const id = product.id
-  
-      dispatch(editCartAsync({cartId,  id})).then(()=>{
-        dispatch(fetchProductsAsync());
-      })
-      console.log("ID",id)
-    };
 
   useEffect(() => {
     console.log("CART ID: ", cartId)

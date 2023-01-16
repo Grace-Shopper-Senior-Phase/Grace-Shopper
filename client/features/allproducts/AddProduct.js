@@ -13,7 +13,9 @@ const AddProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addProductAsync({ name, price, description, imageUrl, quantity })).then(()=>{dispatch(fetchProductsAsync())});
+    if (isNaN(price)){ alert("please input number in price field")}
+    if (name === "" ){alert("please provide product name")}
+    dispatch(addProductAsync({ name, price, description, imageUrl, quantity })).then(()=>{dispatch(fetchProductsAsync())})
   };
   
 
