@@ -21,7 +21,7 @@ const SingleUser = () => {
   const dispatch = useDispatch()
 
   const handleDelete = (userId) => {
-    dispatch(deleteSingleCartAsync(userId)).then(()=>dispatch(deleteSingleUserAsync(userId))).then(navigate('/home', {replace: true}))
+    dispatch(deleteSingleCartAsync(userId)).then(()=>dispatch(deleteSingleUserAsync(userId))).then(()=>navigate('/admin/users', {replace: true}))
   }
 
   useEffect(() => {
