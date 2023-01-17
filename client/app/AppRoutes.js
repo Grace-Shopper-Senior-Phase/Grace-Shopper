@@ -11,7 +11,8 @@ import SingleProductAdmin from "../features/singleProduct/SingleProductAdmin";
 import AllUsersAdmin from '../features/usersadmin/AllUsers';
 import SingleUser from '../features/usersadmin/SingleUser';
 import Cart from '../features/cart/Cart';
-import Checkout from '../features/checkout/Checkout'
+import Checkout from '../features/checkout/Checkout'import LandingPage from "../features/landingPage/LandingPage";
+
 /**
  * COMPONENT
  */
@@ -103,10 +104,7 @@ const AppRoutes = () => {
       
       (
         <Routes>
-          <Route
-            path="/*"
-            element={<AuthForm name="login" displayName="Login" />}
-          />
+          <Route path="/*" element={<LandingPage />} />
           <Route
             path="/login"
             element={<AuthForm name="login" displayName="Login" />}

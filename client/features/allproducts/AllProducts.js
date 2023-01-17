@@ -17,7 +17,6 @@ const AllProducts = () => {
   const handleAddToCart = (product) => {
     const id = product.id
     dispatch(editCartAsync({cartId, id}))
-    console.log("ID",id)
   };
 
   
@@ -32,7 +31,6 @@ const AllProducts = () => {
   //   };
 
   useEffect(() => {
-    console.log("CART ID: ", cartId)
     dispatch(fetchProductsAsync());
   }, [dispatch] );
 

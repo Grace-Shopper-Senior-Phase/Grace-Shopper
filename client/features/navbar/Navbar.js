@@ -17,10 +17,10 @@ const Navbar = () => {
 
   return (
     <div>
-      <h1>Grace Shopper</h1>
+      <h1 className="text-white bg-black flex justify-center text-5xl p-7 brightness-50 italic">Grace Shopper</h1>
       <nav>
         {isLoggedIn && !isAdmin ? (
-          <div>
+          <div className='flex justify-evenly'>
             {/* The navbar will show these links after you log in */}
             <Link to="/home">Home</Link>
             <Link to="/cart">Cart</Link>
@@ -54,7 +54,7 @@ const Navbar = () => {
       </div>
         :
         (
-          <div>
+          <div className='flex justify-evenly'>
             {/* The navbar will show these links before you log in */}
             <Link to="/login">Login</Link>
             <Link to="/signup">Sign Up</Link>

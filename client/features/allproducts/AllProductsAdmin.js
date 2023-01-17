@@ -12,7 +12,7 @@ import AddProduct from "../allproducts/AddProduct";
 
 const AllProductsAdmin = () => {
   const products = useSelector(selectProducts);
-  console.log("ALL PRODUCTS ADMIN: ", products)
+
 
   const dispatch = useDispatch()
 
