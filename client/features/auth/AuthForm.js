@@ -31,22 +31,23 @@ const AuthForm = ({ name, displayName }) => {
 
   return (
     <>
+    <a className="p-4 flex justify-center -mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray" href='/'>Home</a>  
     {!isLoggedIn || (isLoggedIn && isAdmin) ? (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
+    <div className="w-full h-full flex justify-center">
+      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit} name={name}>
         <div>
-          <label htmlFor="username">
+          <label className='flex justify-center' htmlFor="username">
             <small>Username</small>
           </label>
-          <input name="username" type="text" />
+          <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-1 px-3 text-gray-700 focus:outline-none focus:bg-white" name="username" type="text" />
         </div>
         <div>
-          <label htmlFor="password">
+          <label className='flex justify-center' htmlFor="password">
             <small>Password</small>
           </label>
-          <input name="password" type="password" />
+          <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-1 px-3 text-gray-700 focus:outline-none focus:bg-white" name="password" type="password" />
         </div>
-        <div>
+        <div className="p-4 flex justify-center">
           <button type="submit">{displayName}</button>
         </div>
       

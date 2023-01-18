@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <h1 className="text-white bg-black flex justify-center text-5xl p-7 brightness-50 italic">Grace Shopper</h1>
+      <h1 className="text-white bg-gray-900 flex justify-center text-4xl p-7 brightness-50 italic">Grace Shopper</h1>
       <nav>
         {isLoggedIn && !isAdmin ? (
           <div className='flex justify-evenly'>
@@ -52,19 +52,21 @@ const Navbar = () => {
           Logout
         </button>
       </div>
-        :
-        (
-          <div className='flex justify-evenly'>
-            {/* The navbar will show these links before you log in */}
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
-            <Link to="/loginAdmin">Admin Login</Link>
-            {/* <Link to="/signupAdmin">Sign Up as Admin</Link> */}
-            <Link to="/products">View Products</Link>
-          </div>
-        )}
-      </nav>
-      <hr />
+        // :
+        // (
+        //   // <div className='flex justify-evenly'>
+        //   //   {/* The navbar will show these links before you log in */}
+        //   //   <Link to="/login">Login</Link>
+        //   //   <Link to="/signup">Sign Up</Link>
+        //   //   <Link to="/loginAdmin">Admin Login</Link>
+        //   //   {/* <Link to="/signupAdmin">Sign Up as Admin</Link> */}
+        //   //   <Link to="/products">View Products</Link>
+        //   // </div>
+    :
+    (
+      <div></div>
+    )
+    }</nav>
     </div>
   );
 };
