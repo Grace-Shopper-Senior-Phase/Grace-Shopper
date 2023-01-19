@@ -50,7 +50,6 @@ const AuthForm = ({ name, displayName }) => {
         <div className="p-4 flex justify-center">
           <button type="submit">{displayName}</button>
         </div>
-      
       </form>
     </div> ) : <Home />}
     </>

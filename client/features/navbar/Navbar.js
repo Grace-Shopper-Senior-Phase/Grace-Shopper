@@ -1,73 +1,64 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { logout } from '../../app/store';
+
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-  const isAdmin = useSelector((state) => !!state.auth.me.isAdmin === true)
-  console.log("IS ADMIN IN NAVBAR: ", isAdmin)
- 
+  const isAdmin = useSelector((state) => !!state.auth.me.isAdmin === true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   const logoutAndRedirectHome = () => {
     dispatch(logout());
-    navigate('/login');
+    navigate("/");
   };
 
+  const loggedOutNavigation = [
+    { name: "Home", href: "/" },
+    { name: "Login", href: "/login" },
+    { name: "Signup", href: "/signup" },
+    { name: "Products", href: "/products" },
+    { name: "Admin Portal", href: "/adminlogin" },
+  ];
+
+  const loggedInNavigation = [
+    { name: "Home", href: "/" },
+    { name: "Products", href: "/products" },
+    { name: "Admin Portal", href: "/adminlogin" },
+    { name: "Logout", href: logoutAndRedirectHome() },
+  ];
+
   return (
-    <div>
-      <h1 className="text-white bg-gray-900 flex justify-center text-4xl p-7 brightness-50 italic">Grace Shopper</h1>
-      <nav>
-        {isLoggedIn && !isAdmin ? (
-          <div className='flex justify-evenly'>
-            {/* The navbar will show these links after you log in */}
-            <Link to="/home">Home</Link>
-            <Link to="/cart">Cart</Link>
-            <Link to="/products">Products</Link>
-            {/* <Route
-          ro="/products"
-          element={<AllProducts />} /> */}
-            <button type="button" onClick={logoutAndRedirectHome}>
-              Logout
-            </button>
-          </div>
-        ) : isAdmin ? 
-    
-        <div>
-          {/* NEW COMMENT */}
-        {/* The navbar will show these links after you log in */}
-        
-        {/* <Link to="/home">Home</Link> */}
-        {/* CHANGE BELOW IF WANT ADMIN ACCESS TO ALLL PRODUCTS?CART */}
-        {/* <Link to="/products">Products</Link> */}
-        <Link to="/admin/products">Admin Products</Link>
-        <Link to="admin/signupAdmin">Sign Up New Admin</Link> 
-       
-        <Link to="admin/users">Users</Link> 
-        {/* <Route
-      ro="/products"
-      element={<AllProducts />} /> */}
-        <button type="button" onClick={logoutAndRedirectHome}>
-          Logout
-        </button>
-      </div>
-        // :
-        // (
-        //   // <div className='flex justify-evenly'>
-        //   //   {/* The navbar will show these links before you log in */}
-        //   //   <Link to="/login">Login</Link>
-        //   //   <Link to="/signup">Sign Up</Link>
-        //   //   <Link to="/loginAdmin">Admin Login</Link>
-        //   //   {/* <Link to="/signupAdmin">Sign Up as Admin</Link> */}
-        //   //   <Link to="/products">View Products</Link>
-        //   // </div>
-    :
-    (
-      <div></div>
-    )
-    }</nav>
-    </div>
+    <>
+    <h1 className="text-white bg-gray-900 flex justify-center text-4xl p-7 brightness-50 italic">Grace Shopper</h1>
+      {isLoggedIn && !isAdmin ? (
+        <div className="hidden p-8 text-lg lg:flex lg:min-w-0 lg:flex-1 lg:justify-center lg:gap-x-12">
+          {loggedInNavigation.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className="font-semibold text-gray-900 hover:text-gray-900"
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div className="hidden p-8 text-lg lg:flex lg:min-w-0 lg:flex-1 lg:justify-center lg:gap-x-12">
+          {loggedOutNavigation.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className="font-semibold text-gray-900 hover:text-gray-900"
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
+      )}
+    </>
   );
 };
 
